@@ -1,8 +1,8 @@
-# ESP32-S3 SIP Client - main.c Documentation
+# ESP32-S3 SIP Client 
 
 ## Overview
 
-The `main.c` file implements a simple SIP (Session Initiation Protocol) client for ESP32-S3 that tests connectivity to SIP servers. It connects to WiFi, sends SIP OPTIONS requests, and displays server responses.
+This is an SIP (Session Initiation Protocol) client for ESP32-S3 that tests connectivity to SIP servers. It connects to WiFi, sends SIP OPTIONS requests, and displays server responses.
 
 ## What It Does
 
