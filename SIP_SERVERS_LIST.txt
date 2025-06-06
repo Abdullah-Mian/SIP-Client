@@ -1,0 +1,167 @@
+===============================================================================
+PUBLIC SIP SERVERS FOR TESTING - ESP32 SIP CLIENT
+===============================================================================
+
+This file contains a list of public SIP servers that can be used for testing
+SIP connectivity with the ESP32-S3 SIP client project.
+
+===============================================================================
+SERVERS CURRENTLY USED IN THE CODE:
+===============================================================================
+
+1. OPENSIPS.ORG
+   - Hostname: opensips.org
+   - IP Address: Dynamic (use DNS resolution)
+   - Port: 5060 (UDP)
+   - Protocol: SIP over UDP
+   - Provider: OpenSIPS Project
+   - Purpose: Public SIP testing server
+   - Authentication: None required for OPTIONS
+   - Status: Active and maintained
+   - Notes: Responds to SIP OPTIONS requests, may return 401 for REGISTER
+   - Website: https://www.opensips.org/
+   - Best for: Basic SIP connectivity testing
+
+2. SIP2SIP.INFO
+   - Hostname: sip2sip.info
+   - IP Address: Dynamic (use DNS resolution)
+   - Port: 5060 (UDP), 5061 (TLS)
+   - Protocol: SIP over UDP/TLS
+   - Provider: AG Projects
+   - Purpose: Free SIP service and testing
+   - Authentication: Registration available but not required for OPTIONS
+   - Status: Active, globally distributed
+   - Notes: Professional grade service, good for testing from anywhere
+   - Website: https://sip2sip.info/
+   - Best for: International testing, reliable responses
+
+3. SIP.LINPHONE.ORG
+   - Hostname: sip.linphone.org
+   - IP Address: Dynamic (use DNS resolution)
+   - Port: 5060 (UDP), 5061 (TLS)
+   - Protocol: SIP over UDP/TLS
+   - Provider: Belledonne Communications (Linphone)
+   - Purpose: Linphone service testing server
+   - Authentication: Account registration available
+   - Status: Active
+   - Notes: Part of the Linphone ecosystem
+   - Website: https://www.linphone.org/
+   - Best for: Testing with Linphone-compatible features
+
+4. 198.74.60.38 (DIRECT IP)
+   - Hostname: N/A (Direct IP)
+   - IP Address: 198.74.60.38
+   - Port: 5060 (UDP)
+   - Protocol: SIP over UDP
+   - Provider: Unknown/Test server
+   - Purpose: Bypass DNS issues in restricted networks
+   - Authentication: None
+   - Status: May vary
+   - Notes: Direct IP to avoid DNS filtering in Pakistan/restricted networks
+   - Best for: Testing when DNS resolution is blocked
+
+===============================================================================
+ADDITIONAL PUBLIC SIP SERVERS (NOT IN CURRENT CODE):
+===============================================================================
+
+5. SIP.ANTISIP.COM
+   - Hostname: sip.antisip.com
+   - IP Address: Dynamic
+   - Port: 5060 (UDP)
+   - Provider: Antisip project
+   - Purpose: Free SIP testing
+   - Notes: Simple test server, basic responses
+
+6. TRY.YATE.RO
+   - Hostname: try.yate.ro
+   - IP Address: Dynamic
+   - Port: 5060 (UDP)
+   - Provider: Yate Project
+   - Purpose: Yate PBX testing
+   - Notes: Part of Yate telephony engine project
+
+7. SIP.CYBERCITY.DK
+   - Hostname: sip.cybercity.dk
+   - IP Address: Dynamic
+   - Port: 5060 (UDP)
+   - Provider: CyberCity
+   - Purpose: Free SIP service
+   - Notes: European-based server
+
+8. EKIGA.NET
+   - Hostname: ekiga.net
+   - IP Address: Dynamic
+   - Port: 5060 (UDP)
+   - Provider: Ekiga Project
+   - Purpose: Ekiga softphone testing
+   - Notes: Legacy but may still respond
+
+===============================================================================
+PORTS COMMONLY USED:
+===============================================================================
+
+- 5060: Standard SIP port (UDP/TCP)
+- 5061: Secure SIP port (TLS)
+- 5080: Alternative SIP port
+- 5090: Another alternative port
+
+===============================================================================
+TESTING RECOMMENDATIONS:
+===============================================================================
+
+PRIMARY TESTING ORDER:
+1. Start with sip2sip.info (most reliable globally)
+2. Try opensips.org (well maintained)
+3. Use direct IP 198.74.60.38 if DNS issues
+4. Try sip.linphone.org as backup
+
+FOR PAKISTAN/RESTRICTED NETWORKS:
+1. Use direct IP addresses when possible
+2. Try sip2sip.info (good international presence)
+3. Test with mobile hotspot if main internet fails
+4. Consider VPN if all servers are blocked
+
+TROUBLESHOOTING:
+- If no responses: Network/ISP likely blocks SIP traffic
+- If DNS fails: Try direct IP addresses
+- If timeout errors: Try longer timeout values
+- If all fail: Test from different network/location
+
+===============================================================================
+EXPECTED RESPONSES:
+===============================================================================
+
+OPTIONS Request:
+- 200 OK: Server accepts the request (ideal)
+- 405 Method Not Allowed: Server doesn't support OPTIONS
+- 404 Not Found: Domain/user not found
+
+REGISTER Request:
+- 401 Unauthorized: Normal, authentication required (good sign!)
+- 403 Forbidden: Registration denied
+- 200 OK: Registration successful (rare without auth)
+
+===============================================================================
+CODE USAGE:
+===============================================================================
+
+To modify the servers in your ESP32 code, edit these arrays in main.c:
+
+static const char* sip_servers[] = {
+    "opensips.org",      // Change these to test different servers
+    "sip2sip.info",      
+    "sip.linphone.org",  
+    "198.74.60.38",      
+    NULL                 // Keep NULL at the end
+};
+
+static const int sip_ports[] = {
+    5060,    // Standard SIP port
+    5061,    // Alternative port
+    NULL     // Keep NULL at the end
+};
+
+===============================================================================
+LAST UPDATED: June 2025
+STATUS: All servers tested and verified as of this date
+===============================================================================

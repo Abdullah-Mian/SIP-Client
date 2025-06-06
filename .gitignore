@@ -1,0 +1,15 @@
+# Build directories
+build/
+sdkconfig.old
+
+# IDE files
+.vscode/settings.json
+.vscode/c_cpp_properties.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# ESP-IDF specific
+dependencies.lock
+managed_components/
